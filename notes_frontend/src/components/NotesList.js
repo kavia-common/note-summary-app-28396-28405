@@ -38,8 +38,6 @@ export default Blits.Component('NotesList', {
     }
   },
   mounted() {
-    // eslint-disable-next-line no-console
-    console.log('[NotesList] mounted')
     this._syncFromStore()
     this.unsubscribe = store.subscribe(() => this._syncFromStore())
   },

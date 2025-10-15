@@ -6,10 +6,6 @@ export default Blits.Component('TopNav', {
   state() {
     return {}
   },
-  mounted() {
-    // eslint-disable-next-line no-console
-    console.log('[TopNav] mounted')
-  },
   methods: {
     // PUBLIC_INTERFACE
     newNote() {

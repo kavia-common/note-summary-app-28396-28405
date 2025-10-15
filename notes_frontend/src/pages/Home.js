@@ -15,8 +15,6 @@ export default Blits.Component('Home', {
     }
   },
   mounted() {
-    // eslint-disable-next-line no-console
-    console.log('[Home] mounted - UI should now be visible')
     this._sync()
     this.unsubscribe = store.subscribe(() => this._sync())
   },
@@ -28,11 +26,9 @@ export default Blits.Component('Home', {
       try {
         const st = store.getState()
         this.notesCount = Array.isArray(st.notes) ? st.notes.length : 0
-        // eslint-disable-next-line no-console
-        console.log('[Home] sync notesCount =', this.notesCount)
       } catch (e) {
         // eslint-disable-next-line no-console
-        console.error('Home: sync failed', e)
+        console.error('[Home] sync failed', e)
         this.notesCount = 0
       }
     }

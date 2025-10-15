@@ -53,8 +53,6 @@ export default Blits.Component('EditorPanel', {
     }
   },
   mounted() {
-    // eslint-disable-next-line no-console
-    console.log('[EditorPanel] mounted')
     this.unsubscribe = store.subscribe(() => this._syncFromStore())
   },
   destroyed() {

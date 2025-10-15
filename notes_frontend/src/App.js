@@ -8,10 +8,6 @@ import store from './state/store.js'
  * Store is initialized synchronously on first import.
  */
 export default Blits.Application({
-  mounted() {
-    // eslint-disable-next-line no-console
-    console.log('[App] mounted, store already initialized:', store._initialized)
-  },
   template: `
     <Element :color="$bg" w="1920" h="1080">
       <RouterView />
@@ -22,10 +18,7 @@ export default Blits.Application({
   ],
   computed: {
     $bg() { 
-      const bg = theme.colors.background
-      // eslint-disable-next-line no-console
-      console.log('[App] background color:', bg)
-      return bg
+      return theme.colors.background
     }
   }
 })
