@@ -59,7 +59,7 @@ export default Blits.Component('EditorPanel', {
     if (this.unsubscribe) this.unsubscribe()
   },
   template: `
-    <Element :color="$bg" x="720" y="100" w="1180" h="980">
+    <Element :color="$panelBg" x="720" y="0" w="1180" h="930">
       <Element x="24" y="12" w="1132" h="48" :color="$headerBg">
         <Text :content="$headerTitle" x="12" y="10" fontSize="22" :color="$headerText" />
         <Element x="760" y="6" w="100" h="36" :color="$saveBg" @enter="$save">
@@ -77,17 +77,17 @@ export default Blits.Component('EditorPanel', {
         <Text :content="'Title: ' + (title || 'Untitled')" x="12" y="10" fontSize="22" :color="$label" />
       </Element>
 
-      <Element x="24" y="160" w="1132" h="640" :color="$surface">
+      <Element x="24" y="160" w="1132" h="580" :color="$surface">
         <Text :content="'Content\\n\\n' + (content || '(Start typing...)')" x="12" y="10" fontSize="20" :color="$text" />
       </Element>
 
-      <Element x="24" y="812" w="1132" h="140" :color="$surface">
+      <Element x="24" y="752" w="1132" h="140" :color="$surface">
         <Text :content="'Summary\\n\\n' + (summary || '(Will generate from content)')" x="12" y="10" fontSize="20" :color="$muted" />
       </Element>
     </Element>
   `,
   computed: {
-    $bg() { return theme.colors.surface },
+    $panelBg() { return theme.colors.surface },
     $surface() { return theme.colors.surface },
     $headerBg() { return theme.colors.surface },
     $headerText() { return theme.colors.text },

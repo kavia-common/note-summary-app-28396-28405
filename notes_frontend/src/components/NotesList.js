@@ -45,14 +45,14 @@ export default Blits.Component('NotesList', {
     if (this.unsubscribe) this.unsubscribe()
   },
   template: `
-    <Element :color="$bg" w="680" h="980" x="20" y="100">
+    <Element :color="$panelBg" w="680" h="930" x="20" y="0">
       <Element x="16" y="12" w="648" h="48" :color="$headerBg">
         <Text :content="$headerTitle" x="12" y="10" fontSize="22" :color="$headerText" />
         <Element x="560" y="6" w="72" h="36" :color="$addBg" @enter="$createNote">
           <Text content="+" x="26" y="2" fontSize="28" :color="$addText" />
         </Element>
       </Element>
-      <Element x="16" y="72" w="648" h="892" :color="$listBg">
+      <Element x="16" y="72" w="648" h="842" :color="$listBg">
         <Element
           :for="(item, idx) in $items"
           :key="$item.id"
@@ -66,7 +66,7 @@ export default Blits.Component('NotesList', {
     </Element>
   `,
   computed: {
-    $bg() { return theme.colors.surface },
+    $panelBg() { return theme.colors.surface },
     $headerBg() { return theme.colors.surface },
     $headerText() { return theme.colors.text },
     $addBg() { return theme.colors.primary },

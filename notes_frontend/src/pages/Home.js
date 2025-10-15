@@ -45,12 +45,22 @@ export default Blits.Component('Home', {
   },
   template: `
     <Element :color="$bg" w="1920" h="1080">
-      <TopNav />
-      <Element w="1920" h="980" x="0" y="100" :color="$bg">
+      <!-- TEMPORARY DEBUG BANNER - BRIGHT ORANGE TO CONFIRM RENDERING -->
+      <Element w="1920" h="50" x="0" y="0" color="#FF6600">
+        <Text content="🔥 RENDER WORKING - Ocean Notes App 🔥" x="600" y="10" fontSize="28" color="#FFFFFF" />
+      </Element>
+
+      <!-- TopNav moved down to make room for debug banner -->
+      <Element y="50">
+        <TopNav />
+      </Element>
+
+      <!-- Main content area - FIXED: y=0 relative to this container, which is at y=150 -->
+      <Element w="1920" h="930" x="0" y="150" :color="$bg">
         <Element :alpha="$showEmpty">
           <EmptyState />
         </Element>
-        <!-- Always render core panes; selection/notes presence is handled inside components -->
+        <!-- CRITICAL FIX: Remove y=100 positioning - these should be at y=0 relative to parent -->
         <NotesList />
         <EditorPanel />
       </Element>
