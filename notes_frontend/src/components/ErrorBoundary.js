@@ -46,8 +46,8 @@ export default Blits.Component('ErrorBoundary', {
   },
   template: `
     <Element w="1920" h="1080">
-      <Element :alpha="$showChild">
-        <Element :contentTemplate="$childTemplate" />
+      <Element :alpha="$showChild" w="1920" h="1080">
+        <Element :contentTemplate="$childTemplate" w="1920" h="1080" />
       </Element>
 
       <Element :alpha="$showError" w="1920" h="1080" :color="$overlay">

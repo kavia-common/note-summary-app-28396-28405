@@ -57,6 +57,8 @@ export default Blits.Component('NotesList', {
           :for="(item, idx) in $items"
           :key="$item.id"
           :y="$idx * 98"
+          w="648"
+          h="96"
         >
           <NoteListItem :note="$item" :selected="$isSelected($item)" />
         </Element>

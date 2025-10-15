@@ -26,6 +26,7 @@ export default Blits.Component('TopNav', {
         y="24"
         w="1840"
         h="52"
+        :color="$bg"
       >
         <Text
           content="Ocean Notes"

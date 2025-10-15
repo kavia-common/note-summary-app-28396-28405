@@ -17,11 +17,21 @@ export default Blits.Application({
   mounted() {
     // eslint-disable-next-line no-console
     console.log('[App] mounted')
+    // Ensure store is hydrated before routing renders pages
+    import('./state/store.js').then(({ default: store }) => {
+      try {
+        store.loadFromStorage()
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error('[App] store.loadFromStorage failed', e)
+      }
+    }).catch((e) => {
+      // eslint-disable-next-line no-console
+      console.error('[App] failed to import store', e)
+    })
   },
   template: `
     <Element :color="$bg" w="1920" h="1080">
-      <!-- Visible placeholder to confirm mount -->
-      <Text content="Ocean Notes • App mounted" x="28" y="20" fontSize="18" color="#6b7280" />
       <RouterView />
       <Element :alpha="$debugAlpha">
         <DevOverlay />

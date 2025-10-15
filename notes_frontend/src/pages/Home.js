@@ -50,16 +50,14 @@ export default Blits.Component('Home', {
         <Element :alpha="$showEmpty">
           <EmptyState />
         </Element>
-        <Element :alpha="$showApp">
-          <NotesList />
-          <EditorPanel />
-        </Element>
+        <!-- Always render core panes; selection/notes presence is handled inside components -->
+        <NotesList />
+        <EditorPanel />
       </Element>
     </Element>
   `,
   computed: {
     $bg() { return theme.colors.background },
-    $showEmpty() { return this.notesCount === 0 ? 1 : 0 },
-    $showApp() { return this.notesCount > 0 ? 1 : 0 }
+    $showEmpty() { return this.notesCount === 0 ? 1 : 0 }
   }
 })
