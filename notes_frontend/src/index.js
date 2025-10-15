@@ -5,6 +5,11 @@ import App from './App.js'
 // eslint-disable-next-line no-console
 console.log('[Blits] Launching app...')
 
+// Ensure target element exists
+const mountEl = document.getElementById('app')
+// eslint-disable-next-line no-console
+console.log('[Blits] Mount target', mountEl ? 'found' : 'NOT FOUND')
+
 // Map common keyboard keys to navigation intents for dev preview.
 // Note: Lightning runs via WebGL; these are not DOM listeners.
 Blits.Launch(App, 'app', {

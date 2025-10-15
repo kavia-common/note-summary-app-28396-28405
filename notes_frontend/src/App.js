@@ -14,8 +14,14 @@ export default Blits.Application({
       debug: true, // set to false to hide on-screen diagnostics
     }
   },
+  mounted() {
+    // eslint-disable-next-line no-console
+    console.log('[App] mounted')
+  },
   template: `
     <Element :color="$bg" w="1920" h="1080">
+      <!-- Visible placeholder to confirm mount -->
+      <Text content="Ocean Notes • App mounted" x="28" y="20" fontSize="18" color="#6b7280" />
       <RouterView />
       <Element :alpha="$debugAlpha">
         <DevOverlay />

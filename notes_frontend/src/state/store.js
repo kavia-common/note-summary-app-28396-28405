@@ -36,6 +36,13 @@ const STORAGE_KEY = 'notes-app:v1'
 /**
  * PUBLIC_INTERFACE
  * Store singleton handling notes state and persistence.
+ * Provides:
+ * - subscribe(fn): unsubscribe -> listen to state updates
+ * - getState(): shallow copy of state
+ * - loadFromStorage(): load notes from localStorage with safe fallbacks
+ * - persistToStorage(): persist state to localStorage
+ * - addNote({title, content}), updateNote(id, {title, content}), deleteNote(id)
+ * - selectNote(id), getSelectedNote()
  */
 export const store = {
   /** Internal reactive state */
