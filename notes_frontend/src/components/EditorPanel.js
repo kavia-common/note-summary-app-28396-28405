@@ -53,6 +53,8 @@ export default Blits.Component('EditorPanel', {
     }
   },
   mounted() {
+    // eslint-disable-next-line no-console
+    console.log('[EditorPanel] mounted')
     this.unsubscribe = store.subscribe(() => this._syncFromStore())
   },
   destroyed() {
@@ -60,6 +62,7 @@ export default Blits.Component('EditorPanel', {
   },
   template: `
     <Element :color="$panelBg" x="720" y="0" w="1180" h="930">
+      <!-- Header with buttons -->
       <Element x="24" y="12" w="1132" h="48" :color="$headerBg">
         <Text :content="$headerTitle" x="12" y="10" fontSize="22" :color="$headerText" />
         <Element x="760" y="6" w="100" h="36" :color="$saveBg" @enter="$save">
@@ -73,14 +76,17 @@ export default Blits.Component('EditorPanel', {
         </Element>
       </Element>
 
+      <!-- Title field -->
       <Element x="24" y="72" w="1132" h="80" :color="$surface">
         <Text :content="'Title: ' + (title || 'Untitled')" x="12" y="10" fontSize="22" :color="$label" />
       </Element>
 
+      <!-- Content field -->
       <Element x="24" y="160" w="1132" h="580" :color="$surface">
         <Text :content="'Content\\n\\n' + (content || '(Start typing...)')" x="12" y="10" fontSize="20" :color="$text" />
       </Element>
 
+      <!-- Summary field -->
       <Element x="24" y="752" w="1132" h="140" :color="$surface">
         <Text :content="'Summary\\n\\n' + (summary || '(Will generate from content)')" x="12" y="10" fontSize="20" :color="$muted" />
       </Element>
@@ -106,9 +112,6 @@ export default Blits.Component('EditorPanel', {
     enter() {
       // Enter presses are scoped to buttons via @enter
     },
-    // Handle Ctrl/Cmd+S: Lightning provides key events, emulate via key codes if available.
-    // Here we just map to enter save when 'S' is pressed with meta/ctrl (environment-dependent).
-    // In Blits demo environments, we trigger save on 'S' alone for simplicity.
     right() {},
     left() {},
     up() {},

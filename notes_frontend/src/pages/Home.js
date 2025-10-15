@@ -17,12 +17,6 @@ export default Blits.Component('Home', {
   mounted() {
     // eslint-disable-next-line no-console
     console.log('[Home] mounted')
-    try {
-      store.loadFromStorage()
-    } catch (e) {
-      // eslint-disable-next-line no-console
-      console.error('Home: store.loadFromStorage failed', e)
-    }
     this._sync()
     this.unsubscribe = store.subscribe(() => this._sync())
   },
@@ -45,29 +39,29 @@ export default Blits.Component('Home', {
   },
   template: `
     <Element :color="$bg" w="1920" h="1080">
-      <!-- TEMPORARY DEBUG BANNER - BRIGHT ORANGE TO CONFIRM RENDERING -->
-      <Element w="1920" h="50" x="0" y="0" color="#FF6600">
-        <Text content="🔥 RENDER WORKING - Ocean Notes App 🔥" x="600" y="10" fontSize="28" color="#FFFFFF" />
-      </Element>
-
-      <!-- TopNav moved down to make room for debug banner -->
-      <Element y="50">
+      <!-- TopNav at top -->
+      <Element x="0" y="0">
         <TopNav />
       </Element>
 
-      <!-- Main content area - FIXED: y=0 relative to this container, which is at y=150 -->
-      <Element w="1920" h="930" x="0" y="150" :color="$bg">
+      <!-- Main content area below TopNav -->
+      <Element w="1920" h="930" x="0" y="100" :color="$bg">
+        <!-- Empty state when no notes -->
         <Element :alpha="$showEmpty">
           <EmptyState />
         </Element>
-        <!-- CRITICAL FIX: Remove y=100 positioning - these should be at y=0 relative to parent -->
-        <NotesList />
-        <EditorPanel />
+        
+        <!-- NotesList on left, EditorPanel on right -->
+        <Element :alpha="$showContent">
+          <NotesList />
+          <EditorPanel />
+        </Element>
       </Element>
     </Element>
   `,
   computed: {
     $bg() { return theme.colors.background },
-    $showEmpty() { return this.notesCount === 0 ? 1 : 0 }
+    $showEmpty() { return this.notesCount === 0 ? 1 : 0 },
+    $showContent() { return this.notesCount > 0 ? 1 : 0 }
   }
 })

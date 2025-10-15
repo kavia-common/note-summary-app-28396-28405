@@ -38,6 +38,8 @@ export default Blits.Component('NotesList', {
     }
   },
   mounted() {
+    // eslint-disable-next-line no-console
+    console.log('[NotesList] mounted')
     this._syncFromStore()
     this.unsubscribe = store.subscribe(() => this._syncFromStore())
   },
@@ -46,12 +48,15 @@ export default Blits.Component('NotesList', {
   },
   template: `
     <Element :color="$panelBg" w="680" h="930" x="20" y="0">
+      <!-- Header with title and add button -->
       <Element x="16" y="12" w="648" h="48" :color="$headerBg">
         <Text :content="$headerTitle" x="12" y="10" fontSize="22" :color="$headerText" />
         <Element x="560" y="6" w="72" h="36" :color="$addBg" @enter="$createNote">
           <Text content="+" x="26" y="2" fontSize="28" :color="$addText" />
         </Element>
       </Element>
+      
+      <!-- Scrollable list of notes -->
       <Element x="16" y="72" w="648" h="842" :color="$listBg">
         <Element
           :for="(item, idx) in $items"
