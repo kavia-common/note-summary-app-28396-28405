@@ -15,17 +15,28 @@ export default Blits.Component('Home', {
     }
   },
   mounted() {
-    store.loadFromStorage()
+    try {
+      store.loadFromStorage()
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error('Home: store.loadFromStorage failed', e)
+    }
     this._sync()
     this.unsubscribe = store.subscribe(() => this._sync())
-    // If nothing loaded, start empty state
   },
   destroyed() {
     if (this.unsubscribe) this.unsubscribe()
   },
   methods: {
     _sync() {
-      this.notesCount = store.getState().notes.length
+      try {
+        const st = store.getState()
+        this.notesCount = Array.isArray(st.notes) ? st.notes.length : 0
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error('Home: sync failed', e)
+        this.notesCount = 0
+      }
     }
   },
   template: `

@@ -26,6 +26,7 @@ function truncateTo(str, max = 120) {
  * - strips markdown-like characters
  * - collapses spaces and ensures ~120 char limit with ellipsis
  */
+ // PUBLIC_INTERFACE
 export function summarize(content) {
   const cleaned = normalizeWhitespace(stripMarkdown((content || '').trim()))
   if (!cleaned) return ''
@@ -39,6 +40,7 @@ export function summarize(content) {
  * summarizePreview(content: string, lines = 2): string
  * A shorter preview for list items; aims for 1-2 line brevity (~90 chars).
  */
+ // PUBLIC_INTERFACE
 export function summarizePreview(content, lines = 2) {
   const s = summarize(content)
   const max = Math.max(50, Math.min(90, lines * 70))

@@ -68,6 +68,7 @@ export const store = {
   },
 
   /** PUBLIC_INTERFACE */
+  // PUBLIC_INTERFACE
   loadFromStorage() {
     try {
       const raw = typeof window !== 'undefined' ? window.localStorage.getItem(STORAGE_KEY) : null
@@ -79,19 +80,25 @@ export const store = {
         }
       }
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.warn('Failed to load notes from storage', e)
     }
 
     // If no notes exist (first run), create a starter note so the UI doesn't look blank.
     if (!this._state.notes || this._state.notes.length === 0) {
-      const starter = this.addNote({
-        title: 'Welcome to Ocean Notes',
-        content:
-          'Start typing your first note here. This app automatically generates a short summary from the content. Have fun!'
-      })
-      // addNote already persists and notifies, but ensure selected id
-      this._state.selectedNoteId = starter?.id || null
-      this.persistToStorage()
+      try {
+        const starter = this.addNote({
+          title: 'Welcome to Ocean Notes',
+          content:
+            'Start typing your first note here. This app automatically generates a short summary from the content. Have fun!'
+        })
+        // addNote already persists and notifies, but ensure selected id
+        this._state.selectedNoteId = starter?.id || null
+        this.persistToStorage()
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error('Starter note creation failed', e)
+      }
     } else {
       this._notify()
     }
