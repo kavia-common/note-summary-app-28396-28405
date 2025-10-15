@@ -13,11 +13,8 @@ export default Blits.Application({
     console.log('[App] mounted, store already initialized:', store._initialized)
   },
   template: `
-    <Element color="#00FF00FF" w="1920" h="1080">
-      <Text content="APP ROOT VISIBLE" x="800" y="500" fontSize="48" color="#FF0000FF" />
-      <Element :color="$bg" w="1920" h="1080">
-        <RouterView />
-      </Element>
+    <Element :color="$bg" w="1920" h="1080">
+      <RouterView />
     </Element>
   `,
   routes: [

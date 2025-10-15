@@ -16,7 +16,7 @@ export default Blits.Component('Home', {
   },
   mounted() {
     // eslint-disable-next-line no-console
-    console.log('[Home] mounted')
+    console.log('[Home] mounted - UI should now be visible')
     this._sync()
     this.unsubscribe = store.subscribe(() => this._sync())
   },
@@ -39,11 +39,6 @@ export default Blits.Component('Home', {
   },
   template: `
     <Element :color="$bg" w="1920" h="1080">
-      <!-- Temporary visible test box to confirm rendering -->
-      <Element x="10" y="10" w="200" h="100" color="#FF0000">
-        <Text content="RENDER TEST" x="20" y="20" fontSize="24" color="#FFFFFF" />
-      </Element>
-
       <!-- TopNav at top -->
       <Element x="0" y="0">
         <TopNav />

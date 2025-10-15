@@ -4,8 +4,8 @@ export const theme = {
     secondary: '#F59E0BFF',
     success: '#F59E0BFF',
     error: '#EF4444FF',
-    background: '#E5E7EBFF',  // Visible gray
-    surface: '#FFFFFFFF',      // White for panels
+    background: '#f9fafbFF',  // Light gray background as per style guide
+    surface: '#ffffffFF',      // White for panels
     text: '#111827FF',
     muted: '#6B7280FF',
     border: '#D1D5DBFF',
