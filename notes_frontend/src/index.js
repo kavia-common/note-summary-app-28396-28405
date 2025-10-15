@@ -1,6 +1,10 @@
 import Blits from '@lightningjs/blits'
 import App from './App.js'
 
+// Minimal startup log for debugging preview issues
+// eslint-disable-next-line no-console
+console.log('[Blits] Launching app...')
+
 // Map common keyboard keys to navigation intents for dev preview.
 // Note: Lightning runs via WebGL; these are not DOM listeners.
 Blits.Launch(App, 'app', {
