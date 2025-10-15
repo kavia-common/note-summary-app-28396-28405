@@ -54,6 +54,9 @@ export const store = {
   /** Emitter for state changes */
   _emitter: new Emitter(),
 
+  /** Track if initialization has completed */
+  _initialized: false,
+
   /**
    * Subscribe to store updates.
    * Returns unsubscribe function.
@@ -77,6 +80,8 @@ export const store = {
   /** PUBLIC_INTERFACE */
   // PUBLIC_INTERFACE
   loadFromStorage() {
+    // eslint-disable-next-line no-console
+    console.log('[Store] loadFromStorage called')
     try {
       const raw = typeof window !== 'undefined' ? window.localStorage.getItem(STORAGE_KEY) : null
       if (raw) {
@@ -84,6 +89,8 @@ export const store = {
         if (parsed && Array.isArray(parsed.notes)) {
           this._state.notes = parsed.notes
           this._state.selectedNoteId = parsed.selectedNoteId || null
+          // eslint-disable-next-line no-console
+          console.log('[Store] Loaded', this._state.notes.length, 'notes from storage')
         }
       }
     } catch (e) {
@@ -93,6 +100,8 @@ export const store = {
 
     // If no notes exist (first run), create a starter note so the UI doesn't look blank.
     if (!this._state.notes || this._state.notes.length === 0) {
+      // eslint-disable-next-line no-console
+      console.log('[Store] No notes found, creating starter note')
       try {
         const starter = this.addNote({
           title: 'Welcome to Ocean Notes',
@@ -102,11 +111,15 @@ export const store = {
         // addNote already persists and notifies, but ensure selected id
         this._state.selectedNoteId = starter?.id || null
         this.persistToStorage()
+        // eslint-disable-next-line no-console
+        console.log('[Store] Starter note created:', starter)
       } catch (e) {
         // eslint-disable-next-line no-console
         console.error('Starter note creation failed', e)
       }
     } else {
+      // eslint-disable-next-line no-console
+      console.log('[Store] Notifying subscribers with existing notes')
       this._notify()
     }
   },
@@ -204,6 +217,15 @@ export const store = {
   getSelectedNote() {
     return this._state.notes.find((n) => n.id === this._state.selectedNoteId) || null
   }
+}
+
+// Initialize store synchronously when module loads
+// This ensures data is ready before any components mount
+try {
+  store.loadFromStorage()
+  store._initialized = true
+} catch (e) {
+  console.error('[Store] Failed to initialize', e)
 }
 
 export default store

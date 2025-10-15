@@ -39,6 +39,11 @@ export default Blits.Component('Home', {
   },
   template: `
     <Element :color="$bg" w="1920" h="1080">
+      <!-- Temporary visible test box to confirm rendering -->
+      <Element x="10" y="10" w="200" h="100" color="#FF0000">
+        <Text content="RENDER TEST" x="20" y="20" fontSize="24" color="#FFFFFF" />
+      </Element>
+
       <!-- TopNav at top -->
       <Element x="0" y="0">
         <TopNav />
@@ -47,12 +52,12 @@ export default Blits.Component('Home', {
       <!-- Main content area below TopNav -->
       <Element w="1920" h="930" x="0" y="100" :color="$bg">
         <!-- Empty state when no notes -->
-        <Element :alpha="$showEmpty">
+        <Element x="0" y="0" :alpha="$showEmpty">
           <EmptyState />
         </Element>
         
         <!-- NotesList on left, EditorPanel on right -->
-        <Element :alpha="$showContent">
+        <Element x="0" y="0" :alpha="$showContent">
           <NotesList />
           <EditorPanel />
         </Element>

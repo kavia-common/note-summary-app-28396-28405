@@ -8,34 +8,27 @@ import store from './state/store.js'
  * Store is initialized synchronously on first import.
  */
 export default Blits.Application({
-  state() {
-    return {
-      storeLoaded: false
-    }
-  },
   mounted() {
     // eslint-disable-next-line no-console
-    console.log('[App] mounted')
-    // Load store data from localStorage synchronously
-    try {
-      store.loadFromStorage()
-      this.storeLoaded = true
-      // eslint-disable-next-line no-console
-      console.log('[App] store loaded successfully')
-    } catch (e) {
-      // eslint-disable-next-line no-console
-      console.error('[App] store.loadFromStorage failed', e)
-    }
+    console.log('[App] mounted, store already initialized:', store._initialized)
   },
   template: `
-    <Element :color="$bg" w="1920" h="1080">
-      <RouterView />
+    <Element color="#00FF00FF" w="1920" h="1080">
+      <Text content="APP ROOT VISIBLE" x="800" y="500" fontSize="48" color="#FF0000FF" />
+      <Element :color="$bg" w="1920" h="1080">
+        <RouterView />
+      </Element>
     </Element>
   `,
   routes: [
     { path: '/', component: Home, options: { reuse: true } }
   ],
   computed: {
-    $bg() { return theme.colors.background }
+    $bg() { 
+      const bg = theme.colors.background
+      // eslint-disable-next-line no-console
+      console.log('[App] background color:', bg)
+      return bg
+    }
   }
 })

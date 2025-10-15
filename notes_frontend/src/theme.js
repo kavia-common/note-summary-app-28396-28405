@@ -1,15 +1,15 @@
 export const theme = {
   colors: {
-    primary: '#2563EB',
-    secondary: '#F59E0B',
-    success: '#F59E0B',
-    error: '#EF4444',
-    background: '#E5E7EB',  // Changed to more visible gray
-    surface: '#FFFFFF',      // Keep white for panels
-    text: '#111827',
-    muted: '#6B7280',
-    border: '#D1D5DB',       // Darker border for visibility
-    tint: 'rgba(37,99,235,0.08)'
+    primary: '#2563EBFF',
+    secondary: '#F59E0BFF',
+    success: '#F59E0BFF',
+    error: '#EF4444FF',
+    background: '#E5E7EBFF',  // Visible gray
+    surface: '#FFFFFFFF',      // White for panels
+    text: '#111827FF',
+    muted: '#6B7280FF',
+    border: '#D1D5DBFF',
+    tint: '#2563EB14'  // ~8% opacity
   },
   metrics: {
     radius: 12,
