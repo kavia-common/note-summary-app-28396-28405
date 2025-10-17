@@ -90,7 +90,6 @@ export const store = {
         }
       }
     } catch (e) {
-      // eslint-disable-next-line no-console
       console.warn('Failed to load notes from storage', e)
     }
 
@@ -106,7 +105,6 @@ export const store = {
         this._state.selectedNoteId = starter?.id || null
         this.persistToStorage()
       } catch (e) {
-        // eslint-disable-next-line no-console
         console.error('[Store] Starter note creation failed', e)
       }
     } else {

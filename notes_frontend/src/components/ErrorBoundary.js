@@ -38,7 +38,6 @@ export default Blits.Component('ErrorBoundary', {
         this.message = e?.message || 'Unknown error'
         this.stack = (e?.stack || '').toString()
         // Also log to console to aid debugging
-        // eslint-disable-next-line no-console
         console.error('ErrorBoundary caught error:', e)
         return '<Element />'
       }

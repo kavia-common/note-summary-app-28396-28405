@@ -1,7 +1,6 @@
 import Blits from '@lightningjs/blits'
 import Home from './pages/Home.js'
 import { theme } from './theme.js'
-import store from './state/store.js'
 
 /**
  * Root Application with a single Home route.

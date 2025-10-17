@@ -27,7 +27,6 @@ export default Blits.Component('Home', {
         const st = store.getState()
         this.notesCount = Array.isArray(st.notes) ? st.notes.length : 0
       } catch (e) {
-        // eslint-disable-next-line no-console
         console.error('[Home] sync failed', e)
         this.notesCount = 0
       }
