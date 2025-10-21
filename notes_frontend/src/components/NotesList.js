@@ -49,7 +49,7 @@ export default Blits.Component('NotesList', {
       <!-- Header with title and add button -->
       <Element x="16" y="12" w="648" h="48" :color="$headerBg">
         <Text :content="$headerTitle" x="12" y="10" fontSize="22" :color="$headerText" />
-        <Element x="560" y="6" w="72" h="36" :color="$addBg" @enter="$createNote">
+        <Element x="560" y="6" w="72" h="36" :color="$addBg" @enter="createNote">
           <Text content="+" x="26" y="2" fontSize="28" :color="$addText" />
         </Element>
       </Element>

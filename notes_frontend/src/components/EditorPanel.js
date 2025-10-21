@@ -99,7 +99,7 @@ export default Blits.Component('EditorPanel', {
     },
     _handleNewline() {
       if (this.editMode === 'content') {
-        this.content = (this.content || '') + '\\n'
+        this.content = (this.content || '') + '\n'
       }
     }
   },
@@ -151,25 +151,25 @@ export default Blits.Component('EditorPanel', {
       <!-- Header with buttons -->
       <Element x="24" y="12" w="1132" h="48" :color="$headerBg">
         <Text :content="$headerTitle" x="12" y="10" fontSize="22" :color="$headerText" />
-        <Element x="760" y="6" w="100" h="36" :color="$saveBg" @enter="$save">
+        <Element x="760" y="6" w="100" h="36" :color="$saveBg" @enter="save">
           <Text content="Save" x="18" y="6" fontSize="20" :color="$btnText" />
         </Element>
-        <Element x="870" y="6" w="180" h="36" :color="$regenBg" @enter="$regenerateSummary">
+        <Element x="870" y="6" w="180" h="36" :color="$regenBg" @enter="regenerateSummary">
           <Text content="Regenerate" x="18" y="6" fontSize="20" :color="$btnText" />
         </Element>
-        <Element x="1056" y="6" w="76" h="36" :color="$deleteBg" @enter="$deleteNote">
+        <Element x="1056" y="6" w="76" h="36" :color="$deleteBg" @enter="deleteNote">
           <Text content="Del" x="22" y="6" fontSize="20" :color="$btnText" />
         </Element>
       </Element>
 
       <!-- Title field -->
-      <Element x="24" y="72" w="1132" h="80" :color="$titleFieldBg" @enter="$editTitle">
+      <Element x="24" y="72" w="1132" h="80" :color="$titleFieldBg" @enter="editTitle">
         <Text :content="$titleDisplay" x="12" y="10" fontSize="22" :color="$label" />
         <Text :content="$titleCursor" x="$titleCursorX" y="10" fontSize="22" :color="$cursorColor" :alpha="$cursorAlpha" />
       </Element>
 
       <!-- Content field -->
-      <Element x="24" y="160" w="1132" h="580" :color="$contentFieldBg" @enter="$editContent">
+      <Element x="24" y="160" w="1132" h="580" :color="$contentFieldBg" @enter="editContent">
         <Text :content="$contentDisplay" x="12" y="10" fontSize="20" :color="$text" />
       </Element>
 
@@ -225,12 +225,12 @@ export default Blits.Component('EditorPanel', {
       return this.editMode !== 'none' && this.cursorVisible ? 1 : 0
     },
     $contentDisplay() {
-      const prefix = 'Content\\n\\n'
+      const prefix = 'Content\n\n'
       const text = this.content || '(Start typing...)'
       return prefix + text
     },
     $summaryDisplay() {
-      const prefix = 'Summary\\n\\n'
+      const prefix = 'Summary\n\n'
       const text = this.summary || '(Will generate from content)'
       return prefix + text
     },

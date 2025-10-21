@@ -12,7 +12,7 @@ export default Blits.Component('EmptyState', {
   template: `
     <Element :color="$bg" w="1920" h="930" x="0" y="0">
       <Text content="No notes yet" x="760" y="360" fontSize="36" :color="$text" />
-      <Element x="860" y="420" w="200" h="60" :color="$btnBg" @enter="$createFirst">
+      <Element x="860" y="420" w="200" h="60" :color="$btnBg" @enter="createFirst">
         <Text content="Create Note" x="26" y="16" fontSize="24" :color="$btnText" />
       </Element>
     </Element>

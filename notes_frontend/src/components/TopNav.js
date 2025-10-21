@@ -41,7 +41,7 @@ export default Blits.Component('TopNav', {
           w="200"
           h="52"
           :color="$buttonColor"
-          @enter="$newNote"
+          @enter="newNote"
           :alpha="$btnAlpha"
         >
           <Text content="+ New Note" x="20" y="12" fontSize="22" :color="$btnText" />

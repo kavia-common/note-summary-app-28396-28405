@@ -31,7 +31,7 @@ export default Blits.Component('NoteListItem', {
       :x="$x"
       :y="$y"
       :alpha="$alpha"
-      @enter="$select"
+      @enter="select"
     >
       <Element w="6" h="96" :color="$leftBorder" />
       <Text :content="$title" x="20" y="12" fontSize="22" :color="$titleColor" />

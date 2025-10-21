@@ -9,7 +9,7 @@ export const theme = {
     text: '#111827',
     muted: '#6B7280',
     border: '#D1D5DB',
-    tint: '#2563EB14'  // ~8% opacity - using alpha in last 2 chars
+    tint: 0xE8EEF8FF  // Light blue tint (~8% blue overlay)
   },
   metrics: {
     radius: 12,
