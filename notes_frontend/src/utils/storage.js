@@ -112,7 +112,8 @@ export function getStorageSize() {
     if (typeof window === 'undefined') return 0
     const data = window.localStorage.getItem(STORAGE_KEY)
     return data ? new Blob([data]).size : 0
-  } catch (_e) {
+  } catch (e) {
+    console.warn('[Storage] Failed to get storage size:', e)
     return 0
   }
 }
@@ -131,7 +132,8 @@ export function isStorageAvailable() {
     window.localStorage.setItem(testKey, 'test')
     window.localStorage.removeItem(testKey)
     return true
-  } catch (e) {
+  } catch (err) {
+    console.warn('[Storage] isStorageAvailable check failed:', err)
     return false
   }
 }

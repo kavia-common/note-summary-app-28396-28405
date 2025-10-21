@@ -23,13 +23,8 @@ export default Blits.Component('Home', {
   },
   methods: {
     _sync() {
-      try {
-        const st = store.getState()
-        this.notesCount = Array.isArray(st.notes) ? st.notes.length : 0
-      } catch (e) {
-        console.error('[Home] sync failed', e)
-        this.notesCount = 0
-      }
+      const st = store.getState()
+      this.notesCount = Array.isArray(st.notes) ? st.notes.length : 0
     }
   },
   template: `

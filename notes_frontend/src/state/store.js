@@ -105,7 +105,7 @@ export const store = {
         this._state.selectedNoteId = starter?.id || null
         this.persistToStorage()
       } catch (e) {
-        console.error('[Store] Starter note creation failed', e)
+        console.warn('[Store] Starter note creation failed', e)
       }
     } else {
       this._notify()
@@ -213,7 +213,7 @@ try {
   store.loadFromStorage()
   store._initialized = true
 } catch (e) {
-  console.error('[Store] Failed to initialize', e)
+  console.warn('[Store] Failed to initialize', e)
 }
 
 export default store
