@@ -31,6 +31,10 @@ npm run dev
 
 This command uses Vite to fire up a local server, with Hot Reloading support. Visit the provided link in your web browser to see the App in action.
 
+Notes:
+- If port 3000 is in use, Vite will start on the next available port (e.g., 3001). Check the terminal output for the actual URL.
+- Public assets live under public/assets and are referenced without the public/ prefix (e.g., src="assets/logo.svg").
+
 #### Build the App for production
 
 Create an optimized and minified version of your App:

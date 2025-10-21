@@ -14,7 +14,7 @@ export default Blits.Component('Home', {
     <Element w="1920" h="1080" color="#1e293b">
       <Element :y.transition="$y">
         <Element
-          src="assets/logo.png"
+          src="assets/logo.svg"
           w="200"
           h="200"
           :scale.transition="{value: $scale, duration: 500}"
